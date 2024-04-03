@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class HelloApplication extends Application {
     @Override
@@ -17,7 +18,17 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+
+
     public static void main(String[] args) {
+        try {
+            DocsQuickstart.prepService();
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         launch();
+
     }
 }
